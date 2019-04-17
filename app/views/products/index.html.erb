@@ -14,6 +14,7 @@
     <tr>
       <td><%= product.product_code %></td>
       <td><%= product.name %></td>
+      <td><%= product.discount %></td>
       <td><%= number_to_currency(product.price) %></td>
 
       <%= form_tag order_items_path do %>
