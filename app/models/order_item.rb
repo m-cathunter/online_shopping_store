@@ -1,4 +1,5 @@
 class OrderItem < ApplicationRecord
+  validates_presence_of :quantity, :price
   belongs_to :order
   belongs_to :product
 
