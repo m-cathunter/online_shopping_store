@@ -15,6 +15,7 @@
         <td><%= order_item.product.name %></td>
         <td><%= number_to_currency(order_item.price) %></td>
         <td><%= order_item.quantity %></td>
+        <td><%= order_item.price_for_product %></td>
         <td>
           <%= form_for order_item, method: :delete do |f| %>
             <%= f.submit "Remove" %>
