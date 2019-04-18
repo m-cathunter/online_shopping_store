@@ -1,0 +1,25 @@
+<head>
+  <h2>
+    Product form
+  </h2>
+</head>
+
+<%= bootstrap_form_for([:admin, product]) do |product| %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-outline-secondary">
+        <div class="card-body">
+          <%= product.text_field :product_code %>
+          <%= product.text_field :name %>
+          <%= product.text_field :price %>
+          <%= product.text_field :discount %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <%= product.submit("#{@product.persisted? ? 'Update' : 'Create'} product",
+    class: "btn btn-primary") %>
+<% end %>

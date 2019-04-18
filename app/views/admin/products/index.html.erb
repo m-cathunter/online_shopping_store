@@ -1,6 +1,8 @@
 <head>
   <h2>
-    Products
+    <span>Products</span>
+    <%= link_to "Add new", new_admin_product_path,
+      class: "btn btn-primary float-right" %>
   </h2>
 </head>
 
@@ -14,25 +16,16 @@
             <th>Name</th>
             <th>Discount</th>
             <th>Price</th>
-            <th></th>
-            <th>Quantity</th>
-            <th></th>
           </tr>
         </thead>
 
         <tbody>
           <% @products.each do |product| %>
-          <tr>
+          <tr data-link="<%= edit_admin_product_path(product) %>">
             <td><%= product.product_code %></td>
             <td><%= product.name %></td>
             <td><%= product.discount %></td>
             <td><%= number_to_currency(product.price) %></td>
-
-            <%= form_tag order_items_path do %>
-              <td><%= hidden_field_tag :product_id, product.id %></td>
-              <td><%= number_field_tag :quantity, 1 %></td>
-              <td><%= submit_tag "Add to Cart", class: "btn btn-primary" %></td>
-            <% end %>
           </tr>
           <% end %>
         </tbody>
