@@ -1,36 +1,48 @@
-<h2>Current Cart</h2>
+<head>
+  <h2>
+    <span>Current Cart</span>
+    <%= link_to "Add something to your cart", products_path,
+      class: "btn btn-primary float-right" %>
+  </h2>
+</head>
 
-<table>
-  <thead>
-    <tr>
-      <td>Product</td>
-      <td>Price</td>
-      <td>Quantity</td>
-      <td></td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @order_items.each do |order_item| %>
-      <tr>
-        <td><%= order_item.product.name %></td>
-        <td><%= number_to_currency(order_item.price) %></td>
-        <td><%= order_item.quantity %></td>
-        <td><%= order_item.price_for_product %></td>
-        <td>
-          <%= form_for order_item, method: :delete do |f| %>
-            <%= f.submit "Remove" %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="4" align="rigft">
-        <%= number_to_currency(current_cart.total_price)%>
-      </td>
-    </tr>
-  </tfoot>
-</table>
+<div class="card">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <td>Product name</td>
+          <td>Price</td>
+          <td>Quantity</td>
+          <td>Price for product</td>
+          <td></td>
+        </tr>
+      </thead>
 
-<%= link_to 'Checkout', checkout_path %>
+      <tbody>
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <td><%= order_item.product.name %></td>
+            <td><%= number_to_currency(order_item.price) %></td>
+            <td><%= order_item.quantity %></td>
+            <td><%= order_item.price_for_product %></td>
+            <td>
+              <%= form_for order_item, method: :delete do |f| %>
+              <%= f.submit "Remove from cart",
+                class: "btn btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr/>
+
+Price for all cart:
+<%= number_to_currency(current_cart.total_price)%>
+
+<%= link_to 'Checkout', checkout_path,
+  class: "btn btn-primary float-right" %>

@@ -1,31 +1,36 @@
-<h2>Checkout</h2>
+<head>
+  <h2>
+    Checkout
+  </h2>
+</head>
 
 <%= form_for @order, url: checkout_path do |f| %>
-
-  <p>
+  <div class="form-grop">
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
-  </p>
+  </div>
 
-  <p>
+  <div class="form-grop">
     <%= f.label :last_name %>
     <%= f.text_field :last_name %>
-  </p>
+  </div>
 
-  <p>
+  <div class="form-grop">
     <%= f.label :address %>
     <%= f.text_area :address %>
-  </p>
+  </div>
 
-  <p>
+  <div class="form-grop">
     <%= f.label :email %>
     <%= f.text_field :email %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.label :phone %>
+  <div class="form-grop">
+    <%= f.label :phone %><br>
     <%= f.text_field :phone %>
-  </p>
+  </div>
 
-  <%= f.submit 'Checkout' %>
+  <hr/>
+  <%= f.submit 'Send the order',
+    class: "btn btn-primary" %>
 <% end %>

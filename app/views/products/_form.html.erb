@@ -1,26 +1,32 @@
+<head>
+  <h2>
+    Product form
+  </h2>
+</head>
+
 <%= form_for product do |f| %>
-  <p>
+  <div class="form-grop">
     <%= f.label :product_code %><br>
     <%= f.text_field :product_code %>
-  </p>
+  </div>
 
-  <p>
+  <div class="form-grop">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </p>
+  </div>
 
-  <p>
+  <div class="form-grop">
     <%= f.label :price %><br>
     <%= f.text_field :price %>
-  </p>
+  </div>
 
-  <p>
+  <div class="form-grop">
     <%= f.label :discount %><br>
     <%= f.text_field :discount %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.submit("#{@product.persisted? ? 'Update' : 'Create'} product") %>
-  </p>
+  <hr/>
 
+  <%= f.submit("#{@product.persisted? ? 'Update' : 'Create'} product",
+    class: "btn btn-primary") %>
 <% end %>
