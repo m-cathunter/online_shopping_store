@@ -1,28 +1,44 @@
-<h1>Products</h1>
+<head>
+  <h2>
+    <span>Products</span>
+    <%= link_to "Add new", new_product_path,
+      class: "btn btn-primary float-right" %>
+  </h2>
+</head>
 
-<table>
-  <thead>
-    <tr>
-      <td>Code</td>
-      <td>Name</td>
-      <td>Price</td>
-    </tr>
-  </thead>
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Discount</th>
+            <th>Price</th>
+            <th></th>
+            <th>Quantity</th>
+            <th></th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @products.each do |product| %>
-    <tr>
-      <td><%= product.product_code %></td>
-      <td><%= product.name %></td>
-      <td><%= product.discount %></td>
-      <td><%= number_to_currency(product.price) %></td>
+        <tbody>
+          <% @products.each do |product| %>
+          <tr data-link="<%= edit_product_path(product) %>">
+            <td><%= product.product_code %></td>
+            <td><%= product.name %></td>
+            <td><%= product.discount %></td>
+            <td><%= number_to_currency(product.price) %></td>
 
-      <%= form_tag order_items_path do %>
-        <td><%= hidden_field_tag :product_id, product.id %></td>
-        <td><%= number_field_tag :quantity, 1 %></td>
-        <td><%= submit_tag "Add to Cart" %></td>
-      <% end %>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+            <%= form_tag order_items_path do %>
+              <td><%= hidden_field_tag :product_id, product.id %></td>
+              <td><%= number_field_tag :quantity, 1 %></td>
+              <td><%= submit_tag "Add to Cart", class: "btn btn-primary" %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
