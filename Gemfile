@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'bootstrap_form', '~> 4.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
