@@ -4,30 +4,19 @@
   </h2>
 </head>
 
-<%= form_for @order, url: checkout_path do |f| %>
-  <div class="form-grop">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
-
-  <div class="form-grop">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="form-grop">
-    <%= f.label :address %>
-    <%= f.text_area :address %>
-  </div>
-
-  <div class="form-grop">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="form-grop">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+<%= bootstrap_form_for @order, url: checkout_path do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-outline-secondary">
+        <div class="card-body">
+          <%= f.text_field :first_name %>
+          <%= f.text_field :last_name %>
+          <%= f.text_area :address %>
+          <%= f.text_field :email %>
+          <%= f.text_field :phone %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <hr/>
